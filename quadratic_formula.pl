@@ -1,13 +1,13 @@
 use Android;
+
 my $droid = Android->new();
 
 #purpose of program
 $droid->makeToast('This program computes the real solutions to a quadratic equation'.);
 
-/* get values for a, b, and c
-	which correspond to the coefficients of the 
-	quadratic equation.
-*/
+# get values for a, b, and c
+#	which correspond to the coefficients of the 
+#	quadratic equation.
 
 $a = $droid->dialogGetInput("Value for A", "Please enter a value for A:",
 '');
@@ -19,9 +19,9 @@ $c = $droid->dialogGetInput("Value for C", "Please enter a value for C:",
 '');
 $c = $c->{'result'};
 
-/* 
-	Algorithm for finding real solutions.
-*/
+ 
+# Below is the algorithm for finding real solutions.
+
 
 if ($a == 0) 
 {
