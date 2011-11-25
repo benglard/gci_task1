@@ -1,0 +1,1 @@
+This is a summary and description of Android functionality used in each of the 8 scripts.
