@@ -2,6 +2,17 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script uses a recursive algorithm to check whether a word the user enters is
+a palindrome (Spelled the same backwards and fowards - ex. racecar/lionoil). 
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Notification creation for important usage information
+	c. Prompting and accepting user input
+
+=cut
+
 my $droid = Android->new();
 
 #purpose of program

@@ -4,6 +4,18 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script is as an example of creating alerts with buttons and determining 
+the button the user clicked on. Since I recognized that several of the other scripts would 
+include alerts with buttons, I wanted to make sure I determined the correct method of 
+implementing those features, and I thus created this script as a test space.
+-Android functionality used includes:
+	a. Creating an alert message with buttons
+	b. Determing the button the user clicks on, returning user's choice
+
+=cut
+
 my $droid = Android->new();
 $droid->dialogCreateAlert("Options", "Click the option you would like to select.");
 $droid->dialogSetPositiveButtonText('Text');

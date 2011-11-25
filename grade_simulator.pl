@@ -2,6 +2,21 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script allows users to enter grades with their corresponding weights, and computes the
+average. It also turns the average into an alphabetical grade (ex. "A" if average > 90). The code 
+also allows users to text the calculated average to a friend.
+-Android functionality used includes:
+	a. Creating alert pop-ups to notify users of important usage information
+	b. Getting user input through an input dialog
+	c. Pop-up dialogs displaying results
+	d. Asking user whether they would like to text their average, determining user's choice,
+	   prompting user for phone number if user chooses to text, sending SMS message to provided
+	   phone number
+	   
+=cut
+
 my $droid-> = Android->new();
 
 #purpose of program

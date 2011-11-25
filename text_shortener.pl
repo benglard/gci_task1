@@ -2,6 +2,19 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script shortens text using the traditional SMS messaging style.
+-Examples: "be right back" => "brb" OR "laugh out loud" => "lol"
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Getting user input through a dialog input box
+	c. Asking user whether they would like to text their shortened message, 
+	determining user's choice, prompting user for phone number if user chooses to text, 
+	sending SMS message to provided phone number
+
+=cut
+
 my $droid = Android->new();
 
 # purpose of program:

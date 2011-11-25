@@ -2,6 +2,18 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script geneates a password of either random letters or numbers (depending on user's choice) 
+of a length that the user provides.
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Getting user input through a dialog input box
+	c. Getting user input through an alert box with positive/negative/neutral buttons, 
+	   determing which button user clicks on
+
+=cut
+
 my $droid = Android->new();
 
 # purpose of program

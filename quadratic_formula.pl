@@ -2,6 +2,16 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script calculates the real solutions to a quadratic equation using the quadratic
+formula after a user provides the a,b, and c (coefficients of the quadratic equation).
+-Android functionality used includes: 
+	a. Getting user input through a dialog input box
+	b. Pop-ups for information/results
+
+=cut
+
 my $droid = Android->new();
 
 #purpose of program

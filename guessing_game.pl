@@ -2,6 +2,19 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script is a guessing game, in which a random integer between 1 and 100 is generated. 
+The user is then tasked with figuring out the integer by guessing and seeing whether
+the number he/she guessed is smaller or bigger than then the random number.
+-Android functionality used includes:
+	a. Pop-ups displaying usage information, information on game-play, and results
+	b. Prompting the user for a number, returning feedback to the user based on inputed
+	   number
+	c. Continuously prompting until user guesses the correct number.
+
+=cut
+
 my $droid = Android->new();
 
 #purpose of program

@@ -2,6 +2,25 @@ use Android;
 use strict;
 use warnings;
 
+=pod
+
+-This script provides information and metrics on the battery of your Android device.
+-Information/Metrics provided include: 
+	a. battery health
+	b. battery charge level (as a percent)
+	c. battery plug information (unplugged? AC charger? USB?)
+	d. battery status (charging? full? etc.)
+	e. battery temperature
+	f. battery voltage
+-Android functionality used includes:
+	a. Pop-up alerts with text
+	b. Alerts created with a positive, negative, and neutral button where each buttton provides
+	   a different piece of information on the battery (figuring out which button user clicks on).
+	c. Generating battery 'events'
+		=> Battery events include gathering data on the different metrics shown above
+
+=cut
+
 my $droid = Android->new();
 
 #purpose of program
