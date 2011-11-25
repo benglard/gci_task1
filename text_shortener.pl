@@ -58,3 +58,30 @@ my $new_len = length $input;
 #Output
 $droid->makeToast("Length of message was reduced from $orig_len to $new_len");
 $droid->makeToast("New Message: $input");
+
+my $ret = "$input";
+my $title = "Text Message";
+my $message = "Would you like to text your shortened message to a friend?";
+$droid->dialogCreateAlert("$title", "$message");
+$droid->dialogSetPositiveButtonText('Yes');
+$droid->dialogSetNegativeButtonText('No');
+$droid->dialogShow();
+	
+my $choice = $droid->dialogGetResponse()->{'result'}->{'which'};
+	
+if ($choice eq "positive")
+{
+	textGrade($ret);
+}
+else {;}
+
+sub textGrade {
+	my $message = $_[0];
+	my $num = $droid->dialogGetInput("Number to Text", "Please enter a number
+	to text: ", '')->{'result'};
+	
+	if ($num ne "") 
+	{
+		$droid->smsSend($num, $message);
+	}
+}

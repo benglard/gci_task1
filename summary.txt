@@ -1,1 +1,90 @@
 This is a summary and description of Android functionality used in each of the 8 scripts.
+
+1) battery_info.pl - https://github.com/benglard/gci_task1/blob/master/battery_info.pl 
+
+-This script provides information and metrics on the battery of your Android device.
+-Information/Metrics provided include: 
+	a. battery health
+	b. battery charge level (as a percent)
+	c. battery plug information (unplugged? AC charger? USB?)
+	d. battery status (charging? full? etc.)
+	e. battery temperature
+	f. battery voltage
+-Android functionality used includes:
+	a. Pop-up alerts with text
+	b. Alerts created with a positive, negative, and neutral button where each buttton provides
+	   a different piece of information on the battery (figuring out which button user clicks on).
+	c. Generating battery 'events'
+		=> Battery events include gathering data on the different metrics shown above
+
+2) grade_simulator.pl - https://github.com/benglard/gci_task1/blob/master/grade_simulator.pl
+
+-This script allows users to enter grades with their corresponding weights, and computes the
+average. It also turns the average into an alphabetical grade (ex. "A" if average > 90). The code 
+also allows users to text the calculated average to a friend.
+-Android functionality used includes:
+	a. Creating alert pop-ups to notify users of important usage information
+	b. Getting user input through an input dialog
+	c. Pop-up dialogs displaying results
+	d. Asking user whether they would like to text their average, determining user's choice,
+	   prompting user for phone number if user chooses to text, sending SMS message to provided
+	   phone number
+
+3) guessing_game.pl - https://github.com/benglard/gci_task1/blob/master/guessing_game.pl
+
+-This script is a guessing game, in which a random integer between 1 and 100 is generated. 
+The user is then tasked with figuring out the integer by guessing and seeing whether
+the number he/she guessed is smaller or bigger than then the random number.
+-Android functionality used includes:
+	a. Pop-ups displaying usage information, information on game-play, and results
+	b. Prompting the user for a number, returning feedback to the user based on inputed
+	   number
+	c. Continuously prompting until user guesses the correct number.
+ 
+4) list_test.pl - https://github.com/benglard/gci_task1/blob/master/list_test.pl
+
+-This script is as an example of creating alerts with buttons and determining 
+the button the user clicked on. Since I recognized that several of the other scripts would 
+include alerts with buttons, I wanted to make sure I determined the correct method of 
+implementing those features, and I thus created this script as a test space.
+-Android functionality used includes:
+	a. Creating an alert message with buttons
+	b. Determing the button the user clicks on, returning user's choice
+
+5) palindrome_checker.pl - https://github.com/benglard/gci_task1/blob/master/palindrome_checker.pl
+
+-This script uses a recursive algorithm to check whether a word the user enters is
+a palindrome (Spelled the same backwards and fowards - ex. racecar/lionoil). 
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Notification creation for important usage information
+	c. Prompting and accepting user input
+
+6) password_generator.pl - https://github.com/benglard/gci_task1/blob/master/password_generator.pl
+
+-This script geneates a password of either random letters or numbers (depending on user's choice) 
+of a length that the user provides.
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Getting user input through a dialog input box
+	c. Getting user input through an alert box with positive/negative/neutral buttons, 
+	   determing which button user clicks on
+
+7) quadratic_formula.pl - https://github.com/benglard/gci_task1/blob/master/quadratic_formula.pl
+
+-This script calculates the real solutions to a quadratic equation using the quadratic
+formula after a user provides the a,b, and c (coefficients of the quadratic equation).
+-Android functionality used includes: 
+	a. Getting user input through a dialog input box
+	b. Pop-ups for information/results
+
+8) text_shortener.pl - https://github.com/benglard/gci_task1/blob/master/text_shortener.pl
+
+-This script shortens text using the traditional SMS messaging style.
+-Examples: "be right back" => "brb" OR "laugh out loud" => "lol"
+-Android functionality used includes:
+	a. Pop-ups for information/results
+	b. Getting user input through a dialog input box
+	c. Asking user whether they would like to text their shortened message, 
+	determining user's choice, prompting user for phone number if user chooses to text, 
+	sending SMS message to provided phone number
