@@ -86,7 +86,7 @@ sub plug {
 	$droid->makeToast("Battery Plug Type: $res");
 }
 
-sub stauts {
+sub status {
 	my @stats = qw(unknown charging discharging not-charging full);
 
 	my $res = $droid->batteryGetStatus()->{'result'};
