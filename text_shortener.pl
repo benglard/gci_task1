@@ -71,11 +71,11 @@ my $choice = $droid->dialogGetResponse()->{'result'}->{'which'};
 	
 if ($choice eq "positive")
 {
-	textGrade($ret);
+	textMessage($ret);
 }
 else {;}
 
-sub textGrade {
+sub textMessage {
 	my $message = $_[0];
 	my $num = $droid->dialogGetInput("Number to Text", "Please enter a number
 	to text: ", '')->{'result'};
