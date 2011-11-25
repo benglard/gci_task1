@@ -1,21 +1,23 @@
 use Android;
+use strict;
+use warnings;
 
 my $droid = Android->new();
 
 # purpose of program
 $droid->makeToast('This program generates a password of a given length');
 
-$len = $droid->dialogGetInput("Length of Password", "Enter a length for 
+my $len = $droid->dialogGetInput("Length of Password", "Enter a length for 
 the password: ", '')->{'result'};
 
-$title = "Options";
-$message = "Click on the button corresponding to your desired form of password";
+my $title = "Options";
+my $message = "Click on the button corresponding to your desired form of password";
 $droid->dialogCreateAlert("$title", "$message");
 $droid->dialogSetPositiveButtonText('Letters');
 $droid->dialogSetNegativeButtonText('Numbers');
 $droid->dialogShow();
 
-$choice = $droid->dialogGetResponse()->{'result'}->{'which'};
+my $choice = $droid->dialogGetResponse()->{'result'}->{'which'};
 
 if ($choice eq "positive")
 {
@@ -27,14 +29,14 @@ else
 }
 
 sub letters {
-	$len = $_[0];
-	@letter = ("a" .. "z");
-	@lenA = (0 .. $len - 1);
-	$res = "";
+	my $len = $_[0];
+	my @letter = ("a" .. "z");
+	my @lenA = (0 .. $len - 1);
+	my $res = "";
 	
 	foreach my $pos (@lenA) {
-		$rand = int(rand(26));
-		$rlet = $letter[$rand];
+		my $rand = int(rand(26));
+		my $rlet = $letter[$rand];
 		$res .= "$rlet";
 	}
 	
@@ -43,12 +45,12 @@ sub letters {
 }
 
 sub numbers {
-	$len = $_[0];
-	@lenA = (0 .. $len - 1);
-	$res = "";
+	my $len = $_[0];
+	my @lenA = (0 .. $len - 1);
+	my $res = "";
 	
 	foreach my $pos (@lenA) {
-		$rand = int(rand(10));
+		my $rand = int(rand(10));
 		$res .= "$rand";
 	}
 	

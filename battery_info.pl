@@ -1,4 +1,6 @@
 use Android;
+use strict;
+use warnings;
 
 my $droid = Android->new();
 
@@ -6,8 +8,8 @@ my $droid = Android->new();
 $droid->makeToast('This program provides information on the battery.');
 
 #first three battery info options
-$title = "Options";
-$message = "Click on the button which corresponds to the information you would like to know.");
+my $title = "Options";
+my $message = "Click on the button which corresponds to the information you would like to know.");
 $droid->dialogCreateAlert("$title", "$message");
 $droid->dialogSetPositiveButtonText('Health');
 $droid->dialogSetNegativeButtonText('Level');
@@ -15,6 +17,10 @@ $droid->dialogSetNeutralButtonText('Plug Type');
 $droid->dialogShow();
 
 my $choice = $droid->dialogGetResponse()->{'result'}->{'which'};
+
+$droid->batteryStopMonitoring();
+$droid->makeToast("Gathering battery data...");
+sleep(10);
 
 if ($choice eq "positive")
 {
@@ -51,41 +57,49 @@ else
 	voltage();
 }
 
+$droid->batteryStopMonitoring();
+
 sub health {
-	$res = $droid->batteryGetHealth();
-	$res = $res->{'result'};
+	my @health = qw(unknown good overheat dead over-voltage unspecified-failure);
+
+	my $res = $droid->batteryGetHealth()->{'result'};
+	$res = $health[$res-1];
 	$droid->makeToast("Battery Health: $res");
 }
 
 sub level {
-	$res = $droid->batteryGetLevel();
-	$res = $res->{'result'};
-	$droid->makeToast("Battery Level: $res");
+	my $res = $droid->batteryGetLevel()->{'result'};
+	$droid->makeToast("Battery Level: $res%");
 }
 
 sub plug {
-	$res = $droid->batteryGetPlugType();
-	$res = $res->{'result'};
+	my @plugs = qw(unplugged AC-charger USB-port);
+
+	my $res = $droid->batteryGetPlugType()->{'result'};
+	if ($res ne "-1") {
+		$res = $plugs[$res];
+	}
+	else {
+		$res = "unknown":
+	}
+	
 	$droid->makeToast("Battery Plug Type: $res");
 }
 
 sub stauts {
-	$res = $droid->batteryGetStatus();
-	$res = $res->{'result'};
+	my @stats = qw(unknown charging discharging not-charging full);
+
+	my $res = $droid->batteryGetStatus()->{'result'};
+	$res = $stats[$res-1];
 	$droid->makeToast("Battery Status: $res");
 }
 
 sub temp {
-	$res = $droid->batteryGetTemperature();
-	$res = $res->{'result'};
+	my $res = $droid->batteryGetTemperature()>{'result'};
 	$droid->makeToast("Battery Temperature: $res");
 }
 
 sub voltage {
-	$res = $droid->batteryGetVoltage();
-	$res = $res->{'result'};
+	my $res = $droid->batteryGetVoltage()->{'result'};
 	$droid->makeToast("Battery Voltage: $res");
 }
-
-#Note: this was somewhat hard to test on the Android Emulator, however,
-#This should still work on an phone.

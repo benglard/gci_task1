@@ -1,4 +1,6 @@
 use Android;
+use strict;
+use warnings;
 
 my $droid = Android->new();
 
@@ -7,7 +9,7 @@ $droid->makeToast('This program checks whether a word is a palindrome.');
 
 $droid->notify('Usage', 'Make sure not to use punctuation!');
 
-$input = $droid->dialogGetInput("Palindrome Checker", "Please enter a word: ",
+my $input = $droid->dialogGetInput("Palindrome Checker", "Please enter a word: ",
 '')->{'result'};
 
 check($input);
@@ -19,7 +21,7 @@ check($input);
 # If length of string (possibly new string) = 1 - end => Palindrome!
 
 sub check {
-	$input = $_[0];
+	my $input = $_[0];
 	
 	if ($input eq "")
 	{
@@ -27,9 +29,9 @@ sub check {
 	}
 	else 
 	{
-		$len = length $input;
-		$firstChar = substr("$input", 0, 1);
-		$lastChar = substr("$input", $len -1, 1);
+		my $len = length $input;
+		my $firstChar = substr("$input", 0, 1);
+		my $lastChar = substr("$input", $len -1, 1);
 		print "$len, $firstChar, $lastChar"; #good for testing
 		
 		if ($firstChar ne $lastChar) 

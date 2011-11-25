@@ -1,4 +1,6 @@
 use Android;
+use strict;
+use warnings;
 
 my $droid = Android->new();
 
@@ -9,13 +11,13 @@ $droid->makeToast('This program computes the real solutions to a quadratic equat
 #	which correspond to the coefficients of the 
 #	quadratic equation.
 
-$a = $droid->dialogGetInput("Value for A", "Please enter a value for A:",
+my $a = $droid->dialogGetInput("Value for A", "Please enter a value for A:",
 '');
 $a = $a->{'result'};
-$b = $droid->dialogGetInput("Value for B", "Please enter a value for B:",
+my $b = $droid->dialogGetInput("Value for B", "Please enter a value for B:",
 '');
 $b = $b->{'result'};
-$c = $droid->dialogGetInput("Value for C", "Please enter a value for C:",
+my $c = $droid->dialogGetInput("Value for C", "Please enter a value for C:",
 '');
 $c = $c->{'result'};
 
@@ -35,24 +37,24 @@ if ($a == 0)
 		}
 	}
 	else {
-		$x = -1 * ($c/$b);
+		my $x = -1 * ($c/$b);
 		$droid->makeToast("The equation is linear and its solution is $x");
 	}
 }
 else {
-	$rad = ($b*$b) - (4*$a*$c);
+	my $rad = ($b*$b) - (4*$a*$c);
 	
 	if ($rad<0) {
 		$droid->makeToast('There are no real solutions');
 	}
 	elsif ($rad == 0) {
-		$x = (-1) * ($b/(2*$a));
+		my $x = (-1) * ($b/(2*$a));
 		$droid->makeToast("One Solution: $x");
 	}
 	else {
-		$s = sqrt($rad);
-		$x1 = ((-1*$b) + $s)/(2*$a);
-		$x2 = ((-1*$b) + $s)/(2*$a);
+		my $s = sqrt($rad);
+		my $x1 = ((-1*$b) + $s)/(2*$a);
+		my $x2 = ((-1*$b) - $s)/(2*$a);
 		$droid->makeToast("There are two solutions and they are: $x1 and $x2");
 	}
 }

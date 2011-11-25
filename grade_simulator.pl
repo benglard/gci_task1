@@ -1,4 +1,7 @@
 use Android;
+use strict;
+use warnings;
+
 my $droid-> = Android->new();
 
 #purpose of program
@@ -7,12 +10,12 @@ and then calculates an average.");
 
 #Usage alerts
 sub alert {
-	$title = "Alert 1";
-	$message = "Usage:\n Enter a grade comma space wieght";
+	my $title = "Alert 1";
+	my $message = "Usage:\n Enter a grade comma space wieght";
 	$droid->dialogCreateAlert("$title", "$message");
 	$droid->dialogSetPositiveButtonText('Confirm');
 	$droid->dialogShow();
-	sleep(10);
+	sleep(5);
 	
 	$title = "Alert 2";
 	$message = "Usage:\n Enter q to stop entering grades";
@@ -22,21 +25,21 @@ sub alert {
 	return $droid->dialogGetResponse()->{'result'}->{'which'};
 }
 
-@grades = ();
-@weights = ();
+my @grades = ();
+my @weights = ();
 
 alert();
-$input = getInput();
+my $input = getInput();
 
 while ($input ne "q")
 {
-	$in = "$input";
-	$posC = index($in, ',');
+	my $in = "$input";
+	my $posC = index($in, ',');
 	
-	$grade = substr($in, 0, $posC);
+	my $grade = substr($in, 0, $posC);
 	print "$grade ";
 	
-	$weight = substr($in, $posC+2);
+	my $weight = substr($in, $posC+2);
 	print "$weight\n";
 	
 	enterGrade($grade, $weight);
@@ -47,19 +50,19 @@ while ($input ne "q")
 output();
 
 sub output {
-	$avg = average();
-	$ret = "Your average is:\n$avg";
+	my $avg = average();
+	my $ret = "Your average is:\n$avg";
 	$droid->makeToast("$ret");
 	print "$ret";
 	
-	$title = "Text Average";
-	$message = "Would you like to text your average to a friend?";
+	my $title = "Text Average";
+	my $message = "Would you like to text your average to a friend?";
 	$droid->dialogCreateAlert("$title", "$message");
 	$droid->dialogSetPositiveButtonText('Yes');
 	$droid->dialogSetNegativeButtonText('No');
 	$droid->dialogShow();
 	
-	$choice = $droid->dialogGetResponse()->{'result'}->{'which'};
+	my $choice = $droid->dialogGetResponse()->{'result'}->{'which'};
 	
 	if ($choice eq "positive")
 	{
@@ -69,8 +72,8 @@ sub output {
 }
 
 sub textGrade {
-	$message = $_[0];
-	$num = $droid->dialogGetInput("Number to Text", "Please enter a number
+	my $message = $_[0];
+	my $num = $droid->dialogGetInput("Number to Text", "Please enter a number
 	to text: ", '')->{'result'};
 	
 	if ($num ne "") 
@@ -80,23 +83,23 @@ sub textGrade {
 }
 
 sub getInput {
-	$input = $droid->dialogGetInput("Input Box", "Enter a grade, weight: ", 
+	my $input = $droid->dialogGetInput("Input Box", "Enter a grade, weight: ", 
 	'')->{'result'};
 	return $input;
 }
 
 #put user's input into proper arrays
 sub enterGrade {
-	$grade = $_[0];
-	$weight = $_[1];
+	my $grade = $_[0];
+	my $weight = $_[1];
 	
 	push(@grades, $grade);
 	push(@weights, $weight);
 }
 
 sub sumGrades {
-	$sum = 0;
-	$counter = 0;
+	my $sum = 0;
+	my $counter = 0;
 	
 	foreach my $grade (@grades) {
 		$sum += ($grade * $weights[$counter]);
@@ -107,7 +110,7 @@ sub sumGrades {
 }
 
 sub sumWeights {
-	$sum = 0;
+	my $sum = 0;
 	
 	foreach my $weight (@weights) {
 		$sum += $weight;
@@ -118,14 +121,14 @@ sub sumWeights {
 
 #Calculates average, returns numerical and alphabetical grade
 sub average {
-	$ret = "";
-	$sumG = sumGrades();
-	$sumW = sumWeights();
+	my $ret = "";
+	my $sumG = sumGrades();
+	my $sumW = sumWeights();
 	print "$sumG, $sumW\n";
 	
-	$avg = int($sumG/$sumW);
+	my $avg = int($sumG/$sumW);
 	$ret .= "$avg, ";
-	$grade = "";
+	my $grade = "";
 	
 	if ($avg >= 90) {
 		$grade = "A";
