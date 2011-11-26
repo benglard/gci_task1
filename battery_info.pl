@@ -99,7 +99,7 @@ sub plug {
 		$res = $plugs[$res];
 	}
 	else {
-		$res = "unknown":
+		$res = "unknown";
 	}
 	
 	$droid->makeToast("Battery Plug Type: $res");

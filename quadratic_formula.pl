@@ -15,20 +15,17 @@ formula after a user provides the a,b, and c (coefficients of the quadratic equa
 my $droid = Android->new();
 
 #purpose of program
-$droid->makeToast('This program computes the real solutions to a quadratic equation'.);
+$droid->makeToast('This program computes the real solutions to a quadratic equation.');
 
 # get values for a, b, and c
 #	which correspond to the coefficients of the 
 #	quadratic equation.
 
-my $a = $droid->dialogGetInput("Value for A", "Please enter a value for A:",
-'');
+my $a = $droid->dialogGetInput("Value for A", "Please enter a value for A: ", '');
 $a = $a->{'result'};
-my $b = $droid->dialogGetInput("Value for B", "Please enter a value for B:",
-'');
+my $b = $droid->dialogGetInput("Value for B", "Please enter a value for B: ", '');
 $b = $b->{'result'};
-my $c = $droid->dialogGetInput("Value for C", "Please enter a value for C:",
-'');
+my $c = $droid->dialogGetInput("Value for C", "Please enter a value for C: ", '');
 $c = $c->{'result'};
 
  
@@ -47,7 +44,7 @@ if ($a == 0)
 		}
 	}
 	else {
-		my $x = -1 * ($c/$b);
+		my $x = (-1) * ($c/$b);
 		$droid->makeToast("The equation is linear and its solution is $x");
 	}
 }

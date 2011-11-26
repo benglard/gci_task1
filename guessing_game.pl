@@ -18,8 +18,8 @@ the number he/she guessed is smaller or bigger than then the random number.
 my $droid = Android->new();
 
 #purpose of program
-$droid->makeToast('This program is a guessing game. 
-See how many tries it takes you to guess the number. Enjoy!');
+$droid->makeToast('This program is a guessing game. See how many tries it takes you 
+to guess the number. Enjoy!');
 
 my $range = 100;
 my $rand_num = rand($range);
@@ -31,13 +31,13 @@ my $counter = 1;
 
 while ($input != rand_num) 
 {
-	if ($input > rand_num) 
+	if ($input > $rand_num) 
 	{
 		$counter++;
 		$droid->makeToast("Your guess was too large");
 		$input = askInput();
 	}
-	elsif ($input < rand_num)
+	elsif ($input < $rand_num)
 	{
 		$counter++;
 		$droid->makeToast("Your guess was too small");
